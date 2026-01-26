@@ -11,11 +11,36 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
 
+    <!-- css links -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/single-item.css">
+    <link rel="stylesheet" href="css/items.css">
 </head>
 <body>
     <section class="section-center">
         <div id="app">
-
+            <div class="items">
+                <div class="single-item">
+                    <input type="checkbox" checked>
+                    <p style="text-decoration: line-through">Arduino Uno</p>
+                    <button class="btn icon-btn edit-bn" type="button">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                    <button class="btn icon-btn remove-btn" type="button">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </div>
+                <div class="single-item">
+                    <input type="checkbox">
+                    <p style="text-decoration: none;">Esp32 Cam</p>
+                    <button class="btn icon-btn edit-btn" type="button">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                    <button class="btn icon-btn remove-btn" type="button">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
