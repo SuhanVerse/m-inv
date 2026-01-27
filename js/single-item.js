@@ -1,9 +1,9 @@
 //Create a single item element
 
 function createSingleItem(item) {
-    var $div = $('<div class ="single-item"></div>');
+  var $div = $('<div class ="single-item"></div>');
 
-    $div.html(`
+  $div.html(`
         <input type="checkbox" ${item.completed ? "checked" : ""}>
         <p style="text-decoration : ${item.completed ? "line-through" : "none"}">
         ${item.name}
@@ -16,16 +16,15 @@ function createSingleItem(item) {
         </button>
         `);
 
-    //Add event listener for checkbox
-    $div.find('input[type="checkbox"]').on("change",function(){
-        editCompleted(item.id);
-    });
+  //Add event listener for checkbox
+  $div.find('input[type="checkbox"]').on("change", function () {
+    editCompleted(item.id);
+  });
 
-    //Add event listener for remove button
-    $div.find(".remove-btn").on("click", function(){
-        removeItem(item.id);        
-    });
+  //Add event listener for remove button
+  $div.find(".remove-btn").on("click", function () {
+    removeItem(item.id);
+  });
 
-        return $div;
+  return $div;
 }
-
