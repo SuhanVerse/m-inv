@@ -1,6 +1,6 @@
 // app.js
 
-var items = Items;
+// var items = Items;
 var editId = null;
 
 //Render App
@@ -31,6 +31,23 @@ $(document).ready(function () {
   render();
 });
 
+//Local Storage Functions
+function getLocalStorage() {
+  var list = localStorage.getItem("Inventory-List");
+  if (list) {
+    return JSON.parse(list);
+  }
+  return [];
+}
+
+function setLocalStorage(itemsArray) {
+  localStorage.setItem("Inventory-List", JSON.stringify(itemsArray));
+}
+
+//Initialize items for local storage
+var items = getLocalStorage();
+var editId = null;
+
 //Add Item Function
 function addItem(itemName) {
   var newItem = {
@@ -40,6 +57,7 @@ function addItem(itemName) {
   };
 
   items.push(newItem);
+  setLocalStorage(items);
   render();
   setTimeout(function () {
     alert("Item Added Successfully!");
@@ -54,6 +72,7 @@ function editCompleted(itemId) {
     }
     return item;
   });
+  setLocalStorage(items);
   render();
 }
 
@@ -62,6 +81,7 @@ function removeItem(itemId) {
   items = $.grep(items, function (item) {
     return item.id !== itemId;
   });
+  setLocalStorage(items);
   render();
   setTimeout(function () {
     alert("Item Deleted Successfully!");
@@ -77,6 +97,7 @@ function updateItemName(newName) {
     return item;
   });
   editId = null;
+  setLocalStorage(items);
   render();
   setTimeout(function () {
     alert("Item Update Successfully!");
