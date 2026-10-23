@@ -18,6 +18,11 @@ function createForm(editId, itemToEdit) {
         </div>
         `);
 
+  $form.find(".form-input")
+    .val(itemToEdit ? itemToEdit.name : "")
+    .attr("aria-label", "Inventory item name");
+  $form.find('button[type="submit"]').text(editId ? "Update" : "Add item");
+
   $form.on("submit", function (e) {
     e.preventDefault();
     var $input = $form.find(".form-input");
