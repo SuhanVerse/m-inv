@@ -5,18 +5,18 @@
 function createSingleItem(item) {
   var $div = $('<div class ="single-item"></div>');
 
-  $div.html(`
-        <input type="checkbox" ${item.completed ? "checked" : ""}>
-        <p style="text-decoration : ${item.completed ? "line-through" : "none"}">
-        ${item.name}
-        </p>
-        <button class="btn icon-btn edit-btn" type="button">
-            <i class="fa-regular fa-pen-to-square"></i>
-        </button>
-        <button class="btn icon-btn remove-btn" type="button">
-            <i class="fa-regular fa-trash-can "></i>
-        </button>
-        `);
+  // Build user-controlled content as text rather than parsing it as HTML.
+  var $checkbox = $('<input type="checkbox">')
+    .prop("checked", item.completed)
+    .attr("aria-label", `Mark ${item.name} as ${item.completed ? "incomplete" : "completed"}`);
+  var $name = $("<p></p>")
+    .text(item.name)
+    .css("text-decoration", item.completed ? "line-through" : "none");
+  var $edit = $('<button class="btn icon-btn edit-btn" type="button"><i class="fa-regular fa-pen-to-square"></i></button>')
+    .attr("aria-label", `Edit ${item.name}`);
+  var $remove = $('<button class="btn icon-btn remove-btn" type="button"><i class="fa-regular fa-trash-can"></i></button>')
+    .attr("aria-label", `Remove ${item.name}`);
+  $div.append($checkbox, $name, $edit, $remove);
 
   //Add event listener for checkbox
   $div.find('input[type="checkbox"]').on("change", function () {
